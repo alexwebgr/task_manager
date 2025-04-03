@@ -1,0 +1,20 @@
+#projects, #tasks {
+  p:first-child {
+    margin-top: 0;
+  }
+  p {
+    margin: 10px 0 5px;
+  }
+
+  ul, ol {
+    list-style: initial;
+
+    li {
+      margin: 5px 0 0 15px;
+
+      li {
+        margin: 5px 0 0 30px;
+      }
+    }
+  }
+}

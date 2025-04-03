@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Projects" %>
+
+<h1>Projects</h1>
+
+<div id="projects">
+  <%= render partial: "project", collection: @projects, locals: { tasks: @tasks } %>
+</div>
+

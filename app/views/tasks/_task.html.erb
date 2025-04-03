@@ -1,0 +1,9 @@
+<li>
+  <%= task.name %>
+  <% if task.active_subtasks.any? %>
+    <ul>
+      <%= render partial: "tasks/task", collection: task.active_subtasks %>
+    </ul>
+  <% end %>
+  <%= button_to "Destroy this task", task, method: :delete %>
+</li>
