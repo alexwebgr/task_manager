@@ -33,7 +33,10 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: "Task was successfully updated.", status: :see_other
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to @task, notice: "Task was successfully updated.", status: :see_other }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,7 +45,10 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   def destroy
     @task.destroy!
-    redirect_to tasks_path, notice: "Task was successfully destroyed.", status: :see_other
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to tasks_path, notice: "Task was successfully destroyed.", status: :see_other }
+    end
   end
 
   private
