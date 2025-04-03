@@ -1,12 +1,15 @@
 <%= turbo_frame_tag dom_id(task) do %>
   <li>
-    <%= task.name %>
+    <%= turbo_frame_tag dom_id(task, :name) do %>
+      <%= task.name %>
+      <%= link_to "Edit", edit_task_path(task), data: { turbo_frame: dom_id(task, :name) } %>
+    <% end %>
+
     <% if task.active_subtasks.any? %>
       <ul>
         <%= render partial: "tasks/task", collection: task.active_subtasks %>
       </ul>
     <% end %>
-    <%= link_to "Edit", edit_task_path(task), data: { turbo_frame: dom_id(task) } %>
     <%= button_to "Destroy this task", task, method: :delete %>
   </li>
 <% end %>

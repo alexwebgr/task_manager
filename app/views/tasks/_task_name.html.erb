@@ -1,0 +1,4 @@
+<%= turbo_frame_tag dom_id(task, :name) do %>
+  <%= task.name %>
+  <%= link_to "Edit", edit_task_path(task), data: { turbo_frame: dom_id(task, :name) } %>
+<% end %>
