@@ -8,4 +8,10 @@ class Task < ApplicationRecord
   has_many :active_subtasks, -> { active }, class_name: "Task", foreign_key: "parent_task_id", dependent: :destroy
 
   scope :top_level, -> { where(parent_task_id: nil) }
+
+  before_create :set_expiration_date
+
+  def set_expiration_date
+    self.expires_at = 6.months.from_now
+  end
 end
