@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   validates :name, presence: true
   validates :expires_at, presence: true
+  validates :status, presence: true
 
   enum :status, { active: 0, expired: 1 }
 

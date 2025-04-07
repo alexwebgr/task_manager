@@ -20,7 +20,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_07_073147) do
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "expires_at", null: false
-    t.integer "status", default: 0
+    t.integer "status", default: 0, null: false
     t.integer "parent_task_id"
     t.integer "project_id", null: false
     t.datetime "created_at", null: false
