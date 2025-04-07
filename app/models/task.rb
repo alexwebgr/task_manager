@@ -12,7 +12,7 @@ class Task < ApplicationRecord
 
   scope :top_level, -> { where(parent_task_id: nil) }
 
-  before_validation :set_expiration_date
+  before_validation :set_expiration_date, on: :create
 
   def set_expiration_date
     self.expires_at = 6.months.from_now
