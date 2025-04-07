@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(task, :name) do %>
-  <%= form_with model: task, data: { controller: "inline-edit" } do |form| %>
+  <%= form_with model: task do |form| %>
     <div>
-      <%= form.text_field :name, data: { action: "keydown->inline-edit#submitForm", target: "inline-edit.input" } %>
+      <%= form.text_field :name %>
     </div>
   <% end %>
 <% end %>
