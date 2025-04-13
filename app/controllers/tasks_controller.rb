@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @tasks = Task.all.active.top_level.includes(active_subtasks: { active_subtasks: :active_subtasks })
   end
 
   # GET /tasks/1

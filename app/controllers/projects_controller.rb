@@ -8,7 +8,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    # @tasks = @project.tasks.active.top_level.includes(active_subtasks: :active_subtasks)
     @tasks = @project.tasks.active.top_level.includes(active_subtasks: { active_subtasks: :active_subtasks })
+    # @tasks = @project.tasks.active.top_level.includes(active_subtasks: { active_subtasks: { active_subtasks: :active_subtasks } })
   end
 
   # GET /projects/new

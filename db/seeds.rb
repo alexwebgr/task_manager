@@ -25,6 +25,13 @@
       { name: "Expired SubTask #{project_counter} - #{task.id} - #{index}", status: 1, parent_task_id: task.id, expires_at: 1.day.ago }
     ]
     project.tasks.insert_all(subtasks)
+    # nested_task_ids = project.tasks.insert_all(subtasks)
+    # nested_tasks = project.tasks.active.where(id: nested_task_ids)
+    # nested_tasks.each do |nested_task|
+    #   project.tasks.insert_all(
+    #     [{ name: "Active SubTask - Subtask #{project_counter} - #{nested_task.id} - #{index}", status: 0, parent_task_id: nested_task.id, expires_at: 6.months.from_now }]
+    #   )
+    # end
   end
 
   project.tasks.expired.first(5).each_with_index do |task, index|
